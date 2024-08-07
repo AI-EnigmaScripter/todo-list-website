@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: url('list.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border: 3px solid #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px; /* Increased width */
+    text-align: center;
+    position: relative;
+}
+
+.todo-icon {
+    width: 80px; /* Increased size */
+    height: 80px; /* Increased size */
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px; /* Increased font size */
+}
+
+.todo-input {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 12px;
+    width: calc(100% - 140px); /* Adjusted width for larger container */
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #ff8c00;
+    outline: none;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background-color: #ff8c00;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #e07b00;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+li {
+    background-color: #ffde59;
+    color: #333;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #f5c542;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px; /* Increased font size */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+li:hover {
+    background-color: #ffec66;
+}
+
+.task-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #e04343;
+}
+
+button:last-of-type {
+    margin-top: 20px;
+    background-color: #4caf50;
+}
+
+button:last-of-type:hover {
+    background-color: #45a049;
+}
+
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="todo.png" alt="To-Do List Icon" class="todo-icon">
+        <h1>To-Do List</h1>
+        <div class="todo-input">
+            <input type="text" id="taskInput" placeholder="Add a new task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <ul id="taskList"></ul>
+        <button onclick="downloadListAsPDF()">Download List as PDF</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
